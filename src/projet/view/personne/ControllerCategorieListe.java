@@ -64,7 +64,7 @@ public class ControllerCategorieListe {
 	
 	@FXML
 	private void doAjouter() {
-		modelCategorie.preparerAjouter();;
+		modelCategorie.preparerAjouter();
 		managerGui.showView( EnumView.CategorieForm );
 	}
 
