@@ -44,6 +44,7 @@ public class DaoRole {
 			throw new RuntimeException(e);
 		} finally {
 			UtilJdbc.close( stmt, cn );
+			
 		}
 	}
 

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="343.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane prefHeight="343.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerMenu">
    <children>
       <ImageView fitHeight="400.0" fitWidth="593.0" pickOnBounds="true">
          <image>
