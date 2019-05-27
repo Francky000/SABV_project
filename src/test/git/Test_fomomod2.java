@@ -6,4 +6,6 @@ public class Test_fomomod2 {
 		System.out.println( "salut" );
 	}
 
+	
 }
+        

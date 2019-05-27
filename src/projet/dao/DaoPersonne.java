@@ -44,7 +44,7 @@ public class DaoPersonne {
 		try {
 			cn = dataSource.getConnection();
 
-			// Insère le personne
+			// Insère la personne
 			sql = "{ CALL tuto_personne_insert( ?, ?, ?, ? ) }";
 			stmt = cn.prepareCall( sql );
 			stmt.setInt(	1, personne.getCategorie().getId() );

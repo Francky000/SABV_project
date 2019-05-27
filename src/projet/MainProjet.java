@@ -13,14 +13,14 @@ import projet.commun.IMapper;
 import projet.view.ManagerGui;
 
 
-public class MainProjet {
-
+public class MainProjet {  
+          
 	
-	// main()
+	// main()        
 	
-	public static void main(String[] args) {   
+	public static void main(String[] args) {      
 
-		
+		    
 		try {
 
 			// JDBC - DataSource
