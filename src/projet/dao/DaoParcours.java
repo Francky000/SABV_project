@@ -48,7 +48,7 @@ public class DaoParcours {
 
 				
 			
-				} catch (SQLException e) {
+				} catch (SQLException e) {     
 					throw new RuntimeException(e);
 				} finally {
 					UtilJdbc.close( stmt, cn );         
