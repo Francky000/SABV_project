@@ -19,7 +19,7 @@ import projet.data.Theme;
 import fwk3il.dao.jdbc.UtilJdbc;
 
 
-public class DaoParcours {
+public class DaoParcours {    
 
 	// Champs
 
@@ -42,7 +42,7 @@ public class DaoParcours {
 					sql = "{ CALL parcours_insert( ?, ? ) }";
 					stmt = cn.prepareCall( sql );
 					stmt.setInt(1, parcours.getNump());
-					stmt.setString(	1, parcours.getLibellep());
+					stmt.setString(	2, parcours.getLibellep());
 					
 					stmt.executeUpdate();
 
