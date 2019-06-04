@@ -31,13 +31,13 @@ public class DaoMemo {
 	// Champs
 
 	@Inject
-	private DataSource		dataSource;
+	private DataSource		dataSource;          
 	
 	@Inject
-	private DaoPersonne		daoPersonne;
+	private DaoPersonne		daoPersonne;           
 
 	
-	// Actions
+	// Actions       
 
 	public int inserer( Memo memo ) {
 

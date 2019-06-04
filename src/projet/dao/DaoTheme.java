@@ -71,9 +71,8 @@ public class DaoTheme {
 				sql = "UPDATE THEME SET LIBELLE_TH = ? WHERE NUMTH =  ?";
 				stmt = cn.prepareStatement( sql );
 				stmt.setInt(	1, theme.getIdth() );
-				stmt.setString(	2, personne.getNom() );
-				stmt.setString(	3, personne.getPrenom() );
-				stmt.setInt(	4, personne.getId() );
+				stmt.setString(	2, theme.getlibelleth() );
+				
 				stmt.executeUpdate();
 				
 			} catch (SQLException e) {
@@ -82,8 +81,29 @@ public class DaoTheme {
 				UtilJdbc.close( stmt, cn );
 			}
 
-			// Modifie les telephones
-			daoTelephone.modifierPourPersonne( personne );
+			
 		}
+		
+		public void supprimer( int numth) {
+			Connection			cn 		= null;
+			PreparedStatement	stmt 	= null;
+			String				sql;
+
+			try {
+				cn = dataSource.getConnection();
+				sql = "DELETE FROM theme WHERE numth = ? ";
+				stmt = cn.prepareStatement( sql );
+				stmt.setInt( 1, numth);
+				stmt.executeUpdate();
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( stmt, cn );
+			}
+		}
+   
+		
+		
 		
 }

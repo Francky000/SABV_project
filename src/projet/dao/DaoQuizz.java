@@ -27,6 +27,6 @@ public class DaoQuizz {
 		private DataSource		dataSource;
 		@Inject
 		private DaoStat_score	daoStat_score;
-		
+		     
 		
 }
