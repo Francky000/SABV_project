@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
+import javax.inject.Inject;    
 import javax.sql.DataSource;
 import projet.data.Parcours;
 import projet.data.Theme;
@@ -86,9 +86,9 @@ public class DaoParcours {
 				}
 			}
 			
-			public List<String> listQuizz(Parcours p) { 
+			public List<String> listQuizz(Parcours p) {              
 
-				Connection			cn		= null;
+				Connection			cn		= null;       
 				PreparedStatement	stmt	= null;
 				ResultSet 			rs 		= null;
 				String				sql;
