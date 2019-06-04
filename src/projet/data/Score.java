@@ -18,7 +18,7 @@ public class Score {
 	
 	// Constructeurs
 	
-		public Score() {
+		public Score() {   
 		}   
 		
 		public Score( int id_score,float valeur_score,int id_qz, int id_visit) {

@@ -49,7 +49,7 @@ public class MediaReponse {
 				return this.libellemrProperty().getValue();
 			}
 			
-			public final void setlibellemr(final String libellemr) {
+			public final void setlibellemr(final String libellemr) {   
 				this.libellemrProperty().setValue(libellemr);
 			}
 			

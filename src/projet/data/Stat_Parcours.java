@@ -17,10 +17,11 @@ public class Stat_Parcours extends Stat_Score {
 		}
 		
 		public Stat_Parcours( int idstatscore, double min, double max, double moy ) {
-			super(idstatscore);
+			super(idstatscore /*,affiche*/);
 			setmin(min);
 			setmax(max);
 			setmoy(moy);
+			this.setAffiche();
 			
 		}
 		
@@ -60,6 +61,17 @@ public class Stat_Parcours extends Stat_Score {
 		public final void setmoy(final Double moy) {
 			this.moyProperty().setValue(moy);
 		}
+		
+		public final Property<String> afficheProperty() {
+			return this.affiche;
+		}
+		
+		public final void setAffiche() {
+			this.afficheProperty().setValue( String.format("Id_Statscore = %d, score_min = %f, score_max = %f "
+					+ "score_moy = %f",this.id_statscore,this.min,this.max,this.moy));
+		}
+		
+	
 		
 		
 		

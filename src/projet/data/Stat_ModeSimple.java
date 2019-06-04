@@ -21,6 +21,7 @@ public class Stat_ModeSimple extends Stat_Score {
 			setmin(min);
 			setmax(max);
 			setmoy(moy);
+			this.setAffiche();
 			
 		}
 		
@@ -61,6 +62,12 @@ public class Stat_ModeSimple extends Stat_Score {
 			this.moyProperty().setValue(moy);
 		}
 		
+		public final Property<String> afficheProperty() {
+			return this.affiche;
+		}
 		
-		
+		public final void setAffiche() {
+			this.afficheProperty().setValue( String.format("Id_Statscore = %d, score_min = %f, score_max = %f "
+					+ "score_moy = %f",this.id_statscore,this.min,this.max,this.moy));
+		}	
 }

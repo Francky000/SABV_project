@@ -87,7 +87,7 @@ public class Diplome {
 		public String toString() {
 			return getlibelledip();
 		}
-		
+		   
 		
 		// hashCode() & equals()
 

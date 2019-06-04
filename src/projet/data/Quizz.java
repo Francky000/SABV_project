@@ -89,7 +89,7 @@ public class Quizz {
 
 		@Override
 		public int hashCode() {
-			return Objects.hash(id_qz.getValue() );
+			return Objects.hash(id_qz.getValue() );   
 		}
 		
 		@Override

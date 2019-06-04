@@ -206,7 +206,7 @@ public class DaoPersonne {
     }
 	
 	
-	// Méthodes auxiliaires
+	// Méthodes auxiliaires  // categorie correspond à tranche d'âge 
 	
 	private Personne construirePersonne( ResultSet rs, Map<Integer, Categorie> mapCategorie ) throws SQLException {
 		Categorie categorie = null;

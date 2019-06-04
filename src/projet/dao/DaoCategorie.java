@@ -25,9 +25,14 @@ public class DaoCategorie {
 	private DataSource		dataSource;
 
 	
+	
+	/*
+	 libelle_ta varchar (50) NOT NULL ,
+     tranche    varchar (10) NOT NULL   */
+	
 	// Actions
 
-	public int inserer( Categorie categorie ) {
+	public String inserer( Categorie categorie ) {
 
 		Connection			cn		= null;
 		CallableStatement	stmt	= null;
@@ -35,15 +40,14 @@ public class DaoCategorie {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "{ CALL tuto_categorie_insert( ?, ? ) }";
+			sql = "{ CALL categorie_insert( ?, ? ) }";
 			stmt = cn.prepareCall( sql );
-			stmt.setString(	1, categorie.getLibelle() );
-			stmt.registerOutParameter( 2, Types.INTEGER );
+			stmt.setString(	1, categorie.getLibelleta() );
+			stmt.setString(	2, categorie.getTranche() );
 			stmt.executeUpdate();
 
-			// Récupère l'identifiant généré par le SGBD
-			categorie.setId( stmt.getInt( 2 ) );
-			return categorie.getId();
+		
+			return categorie.getLibelleta();
 	
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -53,7 +57,7 @@ public class DaoCategorie {
 	}
 
 
-	public void modifier( Categorie categorie ) {
+	/*public void modifier( Categorie categorie ) {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -72,10 +76,10 @@ public class DaoCategorie {
 		} finally {
 			UtilJdbc.close( stmt, cn );
 		}
-	}
+	}*/
 
 
-	public void supprimer( int idCategorie ) {
+	public void supprimer( String libelleta ) {   // c'est bon 
 
 		Connection			cn 		= null;
 		PreparedStatement	stmt 	= null;
@@ -83,9 +87,9 @@ public class DaoCategorie {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "DELETE FROM tuto_categorie WHERE IdCategorie = ? ";
+			sql = "DELETE FROM tranche_age WHERE libelle_ta = ? ";
 			stmt = cn.prepareStatement( sql );
-			stmt.setInt( 1, idCategorie );
+			stmt.setString( 1, libelleta );
 			stmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -96,7 +100,7 @@ public class DaoCategorie {
 	}
 
 	
-	public Categorie retrouver( int idCategorie ) {
+	public Categorie retrouver( String libelleta ) { // c'est bon 
 
 		Connection			cn 		= null;
 		PreparedStatement	stmt	= null;
@@ -105,9 +109,9 @@ public class DaoCategorie {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "SELECT * FROM tuto_categorie WHERE IdCategorie = ?";
+			sql = "SELECT * FROM tranche_age WHERE libelle_ta = ?";
 			stmt = cn.prepareStatement( sql );
-			stmt.setInt(1, idCategorie);
+			stmt.setString(1, libelleta);
 			rs = stmt.executeQuery();
 
 			if ( rs.next() ) {
@@ -132,7 +136,7 @@ public class DaoCategorie {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "SELECT * FROM tuto_categorie ORDER BY Libelle";
+			sql = "SELECT * FROM tranche_age ORDER BY libelle_ta";
 			stmt = cn.prepareStatement( sql );
 			rs = stmt.executeQuery();
 
@@ -154,8 +158,8 @@ public class DaoCategorie {
 	
 	private Categorie construireCategorie( ResultSet rs ) throws SQLException {
 		Categorie categorie = new Categorie();
-		categorie.setId( rs.getInt( "IdCategorie" ) );
-		categorie.setLibelle( rs.getString( "Libelle" ) );
+		categorie.setLibelleta( rs.getString( "libelle_ta" ) );
+		categorie.setTranche( rs.getString( "tranche" ) );
 		return categorie;
 	}
 

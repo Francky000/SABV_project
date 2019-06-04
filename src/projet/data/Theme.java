@@ -56,13 +56,14 @@ public class Theme {
 				return this.libelleth;
 			}
 			
+			public final void setlibelle(final String libelleth) {
+				this.libellethProperty().setValue(libelleth);
+			}
+			
 			public final String getlibelleth() {
 				return this.libellethProperty().getValue();
 			}
 			
-			public final void setlibelle(final String libelleth) {
-				this.libellethProperty().setValue(libelleth);
-			}
 
 			// toString()
 			

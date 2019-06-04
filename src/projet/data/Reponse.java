@@ -29,7 +29,7 @@ public class Reponse {
 			
 			// Getters et Setters
 
-			public final Property<Integer> idrtProperty() {
+			public final Property<Integer> idrtProperty() {   
 				return this.idrt;
 			}
 

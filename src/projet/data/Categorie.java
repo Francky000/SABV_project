@@ -6,50 +6,53 @@ import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 
 
-public class Categorie  {
+public class Categorie  { // Est tranche d'âge
 	
 
 	// Données observables
 	
-	private final Property<Integer>	id		= new SimpleObjectProperty<>();
-	private final Property<String>	libelle	= new SimpleObjectProperty<>();
+	private final Property<String>	libelle_ta	= new SimpleObjectProperty<>();
+	private final Property<String>	tranche		= new SimpleObjectProperty<>();
 	
+	
+	/* libelle_ta varchar (50) NOT NULL ,
+     tranche    varchar (10) NOT NULL*/
 	
 	// Constructeurs
 	
 	public Categorie() {
 	}
 
-	public Categorie( final int id, final String libelle ) {
-		setId(id);
-		setLibelle(libelle);
+	public Categorie( final String libelle_ta, final String tranche ) {
+		setLibelleta(libelle_ta);
+		setTranche(tranche);
 	}
 	
 	
 	// Getters et Setters
 
-	public final Property<Integer> idProperty() {
-		return this.id;
+	public final Property<String> libelletaProperty() {
+		return this.libelle_ta; 
 	}
 
-	public final Integer getId() {
-		return this.idProperty().getValue();
+	public final String getLibelleta() {
+		return this.libelletaProperty().getValue();
 	}
 
-	public final void setId(final Integer id) {
-		this.idProperty().setValue(id);
+	public final void setLibelleta(final String libelleta) {
+		this.libelletaProperty().setValue(libelleta);
 	}
 
-	public final Property<String> libelleProperty() {
-		return this.libelle;
+	public final Property<String> trancheProperty() {
+		return this.tranche;
 	}
 
-	public final String getLibelle() {
-		return this.libelleProperty().getValue();
+	public final String getTranche() {
+		return this.trancheProperty().getValue();
 	}
 
-	public final void setLibelle(final String libelle) {
-		this.libelleProperty().setValue(libelle);
+	public final void setTranche(final String tranche) {
+		this.trancheProperty().setValue(tranche);
 	}
 
 	
@@ -57,7 +60,7 @@ public class Categorie  {
 	
 	@Override
 	public String toString() {
-		return getLibelle();
+		return getLibelleta();
 	}
 	
 	
@@ -65,7 +68,7 @@ public class Categorie  {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id.getValue() );
+		return Objects.hash(getLibelleta() );
 	}
 
 	@Override
@@ -77,7 +80,7 @@ public class Categorie  {
 		if (getClass() != obj.getClass())
 			return false;
 		Categorie other = (Categorie) obj;
-		return Objects.equals(id.getValue(), other.id.getValue() );
+		return Objects.equals(getLibelleta(), other.getLibelleta() );
 	}
 	
 }
