@@ -14,6 +14,8 @@ public class Visiteur {
    	private final Property<String>	nom	= new SimpleObjectProperty<>();
    	private final Property<String>	prenom		= new SimpleObjectProperty<>();
    	private final Property<Integer>	id_dipl		= new SimpleObjectProperty<>();
+   	private final Property<Integer>	modejeu		= new SimpleObjectProperty<>();
+   	
    	
    	
  // Constructeurs
@@ -21,11 +23,12 @@ public class Visiteur {
  		public Visiteur() {
  		}
 
- 		public Visiteur( final int id_visit, final String nom , final String prenom, final int idDip) {
+ 		public Visiteur( final int id_visit, final String nom , final String prenom, final int idDip,final int modejeu) {
  			setIdVisit(id_visit);
  			setNomV(nom);
  			setPrenomV(prenom);
  			setIdDip(idDip);
+ 			setModejeu(modejeu);    
  			
  		}
  		
@@ -78,8 +81,20 @@ public class Visiteur {
  			public final void setPrenomV(final String nom) {
  				this.prenomProperty().setValue(nom);
  			}   
- 		
+ 			
+ 			public final Property<Integer> ModejeuProperty() {
+ 				return this.modejeu;
+ 			}
 
+ 			public final Integer getModejeu() {
+ 				return this.ModejeuProperty().getValue();
+ 			}
+
+ 			public final void setModejeu(final Integer modejeu) {
+ 				this.ModejeuProperty().setValue(modejeu);
+ 			}
+ 		
+            
  			
 	
 }

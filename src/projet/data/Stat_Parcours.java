@@ -18,7 +18,7 @@ public class Stat_Parcours extends Stat_Score {
 		
 		public Stat_Parcours( int idstatscore, double min, double max, double moy ) {
 			super(idstatscore /*,affiche*/);
-			setmin(min);
+			setmin(min);    
 			setmax(max);
 			setmoy(moy);
 			this.setAffiche();

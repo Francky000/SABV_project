@@ -17,7 +17,7 @@ public class Question {
 
 	// Constructeurs
 	    
-		public Question() {
+		public Question() {   
 		}
 
 		public Question( final int Id_ques, final String libelle , final String bulle_info, final String indice ) {

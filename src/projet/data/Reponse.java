@@ -12,18 +12,18 @@ public class Reponse {
 		private final Property<Integer>	idrt		= new SimpleObjectProperty<>();
 		private final Property<String>	libellert	= new SimpleObjectProperty<>();
 		private final Property<Integer>	id_ques		= new SimpleObjectProperty<>();
-		private final Property<Boolean>	verite		= new SimpleObjectProperty<>();
+		private final Property<Integer>	verite		= new SimpleObjectProperty<>();
 		
 		// Constructeurs
 		
 			public Reponse() {
 			}
 
-			public Reponse( final int idrt, final String libellert , final int id_ques, final boolean verite ) {
+			public Reponse( final int idrt, final String libellert , final int id_ques, final int verite ) {
 				setIdrt(idrt);
 				setlibellert(libellert);
-				setIdques(id_ques);
-				setverite(verite);
+				setIdques(id_ques);     
+				setverite(verite);   
 				
 			}   
 			
@@ -65,15 +65,15 @@ public class Reponse {
 				this.idquesProperty().setValue(id_ques);
 			}
 			
-			public final Property<Boolean> veriteProperty() {
+			public final Property<Integer> veriteProperty() {
 				return this.verite;
 			}
 			
-			public final Boolean getverite() {
+			public final Integer getverite() {
 				return this.veriteProperty().getValue();
 			}
 			
-			public final void setverite(final Boolean verite) {
+			public final void setverite(final Integer verite) {
 				this.veriteProperty().setValue(verite);
 			}
 			

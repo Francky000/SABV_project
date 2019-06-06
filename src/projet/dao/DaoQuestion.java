@@ -8,85 +8,81 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.List;   
 import java.util.Map;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
-import projet.data.Quizz;
 
+import projet.data.Question;
+import projet.data.Quizz;
+          
 import fwk3il.dao.jdbc.UtilJdbc;
 
 
+public class DaoQuestion { 
 
 
-public class DaoQuizz {
-	
 	// Champs       
 
 		@Inject
 		private DataSource		dataSource;
-	/*	@Inject
-		private DaoStat_score	daoStat_score;  */
 		
 		
-		   
-		
-		public List<String> ListQuizz() {
+		public List<String> listReponseImg(Question question ) {
 
 			Connection			cn		= null;
 			PreparedStatement	stmt	= null;
 			ResultSet 			rs 		= null;
-			String				sql;
+			String				sql;    
 
-			try {
+			try {                 
 				cn = dataSource.getConnection();
-
-				sql = "SELECT * FROM Quizz  ORDER BY id_qz ";
+     
+				sql = "SELECT  nom_mr FROM media_reponse ORDER BY id_mr ";
 				stmt = cn.prepareStatement(sql);
+				stmt.setInt( 1, question.getIdques() );
 				rs = stmt.executeQuery();
 
-				List<String> stat = new ArrayList<>();
+				List<String> Ques = new ArrayList<>();      
 				while (rs.next()) {
-					stat.add( rs.getString("id_qz") );
-					
-				}
-				return stat;
-   
+					Ques.add( rs.getString("nom_mr") );
+									}
+				return Ques;
+
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
-			} finally {
+			} finally {       
 				UtilJdbc.close( rs, stmt, cn );
-			}
-		}
+			}                                  
+		}  
 		
-		public List<String> ListQuestions( Quizz qz ) {
+		public List<String> listReponse(Question question ) {
 
 			Connection			cn		= null;
 			PreparedStatement	stmt	= null;
 			ResultSet 			rs 		= null;
-			String				sql;
+			String				sql;    
 
-			try {
+			try {                 
 				cn = dataSource.getConnection();
-
-				sql = "SELECT q.libelle_ques, qz.titre FROM question q INNER JOIN appartenir a " + 
-						"ON q.id_ques = a.id_ques INNER JOIN quizz qz ON qz.id_qz = a.id_qz" + 
-						"WHERE qz.id_qz = ? ORDER BY qz.titre ;";
-				stmt = cn.prepareStatement(sql);
-				stmt.setInt( 1, qz.getIdqz() );
+     
+				sql = "SELECT libelle_rt FROM reponse_rt ORDER BY id_rt ";
+				stmt = cn.prepareStatement(sql); 
+				stmt.setInt( 1, question.getIdques() );
 				rs = stmt.executeQuery();
 
-				List<String> questions = new ArrayList<>();
+				List<String> Ques = new ArrayList<>();      
 				while (rs.next()) {
-					questions.add( rs.getString("q.libelle_ques") );
-				}
-				return questions;
+					Ques.add( rs.getString("libelle_rt") );
+									}
+				return Ques;
 
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
-			} finally {
+			} finally {       
 				UtilJdbc.close( rs, stmt, cn );
-			}
-		}
+			}                                  
+		}  
+		
 }

@@ -15,7 +15,7 @@ public class Categorie  { // Est tranche d'âge
 	private final Property<String>	tranche		= new SimpleObjectProperty<>();
 	
 	
-	/* libelle_ta varchar (50) NOT NULL ,
+	/* libelle_ta varchar (50) NOT NULL ,   
      tranche    varchar (10) NOT NULL*/
 	
 	// Constructeurs
@@ -62,7 +62,7 @@ public class Categorie  { // Est tranche d'âge
 	public String toString() {
 		return getLibelleta();
 	}
-	
+	   
 	
 	// hashCode() & equals()
 

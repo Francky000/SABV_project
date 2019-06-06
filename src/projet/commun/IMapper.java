@@ -7,12 +7,13 @@ import projet.data.Categorie;
 import projet.data.Compte;
 import projet.data.Memo;
 import projet.data.Personne;
+import projet.data.Theme;
 
 
 @Mapper
 public interface IMapper {  
 	
-	Compte update( @MappingTarget Compte target, Compte source  );
+	Theme update( @MappingTarget Theme enCours, Theme theme  );      
 	
 	Categorie update( @MappingTarget Categorie target, Categorie source );
 

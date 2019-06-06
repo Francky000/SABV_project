@@ -14,18 +14,18 @@ public class Parcours {
 		// Constructeurs
 		
 			public Parcours() {  
-			}
+			}   
 
 			public Parcours( final int num_p, final String libelle_p ) {
 				setNump(num_p);
-				setLibellep(libelle_p);
+ 				setLibellep(libelle_p);
 				
 			}
 			
 			// Getters et Setters
 
 			public final Property<Integer> numpProperty() {
-				return this.num_p;
+				return this.num_p;    
 			}
 
 			public final Integer getNump() {

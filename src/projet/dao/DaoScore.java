@@ -27,7 +27,7 @@ public class DaoScore {
 	@Inject
 	private DataSource		dataSource;
 
-	  /* id_stat_score int NOT NULL ,
+	  /* id_stat_score int NOT NULL ,   
        valeur_min    float NOT NULL ,
        valeur_max    float NOT NULL ,
        valeur_moy    float NOT NULL */

@@ -54,7 +54,7 @@ public class Theme {
 
 			public final Property<String> libellethProperty() {
 				return this.libelleth;
-			}
+			}     
 			
 			public final void setlibelle(final String libelleth) {
 				this.libellethProperty().setValue(libelleth);

@@ -26,7 +26,7 @@ public class DaoVisiteur {
 			@Inject
 			private DataSource		dataSource;
 			
-	// Actions
+	// Actions       
 			
 			public int inserer(Visiteur visiteur)  {
 
@@ -38,15 +38,16 @@ public class DaoVisiteur {
 					cn = dataSource.getConnection();
 
 					// Insère la personne
-					sql = "{ CALL tuto_visiteur_insert( ?, ?, ?, ? ) }";
+					sql = "{ CALL tuto_visiteur_insert( ?, ?, ?, ?, ? ) }";
 					stmt = cn.prepareCall( sql );
 					stmt.setInt(	1, visiteur.getIdDip() );
 					stmt.setString(	2, visiteur.getnom() );
 					stmt.setString(	3, visiteur.getprenom() );
 					stmt.registerOutParameter( 4, Types.INTEGER );
+					stmt.setInt(	5, visiteur.getModejeu());
 					stmt.executeUpdate();
 
-					// Récupère l'identifiant généré par le SGBD
+					// Récupère l'identifiant généré par le SGBD   
 					visiteur.setIdVisit( stmt.getInt( 4 ) );
 			
 				} catch (SQLException e) {
@@ -62,7 +63,7 @@ public class DaoVisiteur {
 			}
 			
 			  
-			public void modifier(Visiteur visiteur)  {
+			public void modifier(Visiteur visiteur)  {   // Ne nous sera pas utile 
 
 				Connection			cn		= null;
 				PreparedStatement	stmt	= null;
@@ -72,12 +73,12 @@ public class DaoVisiteur {
 					cn = dataSource.getConnection();
 
 					// Modifie le visiteur
-					sql = "UPDATE visiteur SET id_dipl = ?, nom = ?, prenom = ? WHERE id_visit =  ?";
+					sql = "UPDATE visiteur SET id_dipl = ?, nom = ?, prenom = ?, modejeu = ? WHERE id_visit =  ?";
 					stmt = cn.prepareStatement( sql );
 					stmt.setInt(	1, visiteur.getIdDip());
 					stmt.setString(	2, visiteur.getnom() );
 					stmt.setString(	3, visiteur.getprenom() );
-					stmt.setInt(	4, visiteur.getIdDip());
+					stmt.setInt(	4, visiteur.getModejeu());
 					stmt.executeUpdate();
 					
 				} catch (SQLException e) {
@@ -89,7 +90,7 @@ public class DaoVisiteur {
 				
 			}
 			
-			public void supprimer(int id_visit)  {
+			public void supprimer(int id_visit)  {  // Ne nous sera pas utile 
 
 				Connection			cn		= null;
 				PreparedStatement	stmt	= null;

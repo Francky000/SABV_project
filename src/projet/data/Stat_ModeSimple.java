@@ -17,7 +17,7 @@ public class Stat_ModeSimple extends Stat_Score {
 		}
 		
 		public Stat_ModeSimple( int idstatscore, double min, double max, double moy ) {
-			super(idstatscore);
+			super(idstatscore);  
 			setmin(min);
 			setmax(max);
 			setmoy(moy);

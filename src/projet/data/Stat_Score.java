@@ -22,7 +22,7 @@ public class Stat_Score {
 		// Constructeurs
 		
 			public Stat_Score() {
-			}
+			}    
 
 			public Stat_Score( final int id_statscore/*,final String affich*/ ) {
 				setIdstatscore(id_statscore);

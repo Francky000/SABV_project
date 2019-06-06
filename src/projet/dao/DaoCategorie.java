@@ -106,7 +106,7 @@ public class DaoCategorie {
 		PreparedStatement	stmt	= null;
 		ResultSet 			rs		= null;
 		String				sql;
-
+    
 		try {
 			cn = dataSource.getConnection();
 			sql = "SELECT * FROM tranche_age WHERE libelle_ta = ?";

@@ -109,7 +109,7 @@ public class Compte  {
 	}
 	
 	
-	// hashCode() & equals()
+	// hashCode() & equals()   
 
 	@Override
 	public int hashCode() {

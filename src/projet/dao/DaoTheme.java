@@ -14,6 +14,7 @@ import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import fwk3il.dao.jdbc.UtilJdbc;
+import projet.data.Compte;
 import projet.data.Personne;
 import projet.data.Theme;
 
@@ -28,7 +29,7 @@ public class DaoTheme {
 		
 	
 		public int inserer(Theme theme)  {
-
+   
 			Connection			cn		= null;
 			CallableStatement	stmt	= null;
 			String				sql;
@@ -58,6 +59,46 @@ public class DaoTheme {
 		}    
 
 		
+		
+   
+		public List<Theme> listerTout()   {
+
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs 		= null;
+			String				sql;
+
+			try {
+				cn = dataSource.getConnection();
+
+				sql = "SELECT * FROM theme ORDER BY numth";
+				stmt = cn.prepareStatement( sql );
+				rs = stmt.executeQuery();
+
+				List<Theme> comptes = new ArrayList<>();
+				while ( rs.next() ) {
+					comptes.add( construireTheme(rs) );
+				}
+				return comptes;
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( rs, stmt, cn );
+			}
+		}
+
+		// Méthodes auxiliaires
+		
+		private Theme construireTheme( ResultSet rs ) throws SQLException {
+			Theme theme = new Theme();
+			theme.setIdth( rs.getInt( "numth" ) );
+			theme.setlibelle( rs.getString( "libelle_th" ) );
+			
+			//theme.getRoles().addAll( daoRole.listerPourCompte( compte ) );
+			return theme;
+		}
+		
 		public void modifier(Theme theme)  {
 
 			Connection			cn		= null;
@@ -79,7 +120,7 @@ public class DaoTheme {
 				throw new RuntimeException(e);
 			} finally {
 				UtilJdbc.close( stmt, cn );
-			}
+			}  
 
 			
 		}
@@ -102,7 +143,6 @@ public class DaoTheme {
 				UtilJdbc.close( stmt, cn );
 			}
 		}
-   
 		
 		
 		

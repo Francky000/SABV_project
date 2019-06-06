@@ -50,7 +50,7 @@ public class MediaReponse {
 			}
 			
 			public final void setlibellemr(final String libellemr) {   
-				this.libellemrProperty().setValue(libellemr);
+				this.libellemrProperty().setValue(libellemr);  
 			}
 			
 			public final Property<Integer> idquesProperty() {

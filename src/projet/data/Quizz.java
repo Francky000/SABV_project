@@ -17,17 +17,17 @@ public class Quizz {
 	// Constructeurs
 	
 		public Quizz() {
-		}
+		}        
 
 		public Quizz( final int id_qz, final String titre , final int Numth, final int idStatScore ) {
 			setIdqz(id_qz);
-			setTitre(titre);
+			setTitre(titre);   
 			setNumth(Numth);
 			setidStatScore(idStatScore );
 			
 		}
 	
-
+    
 		// Getters et Setters
 
 		public final Property<Integer> idqzProperty() {

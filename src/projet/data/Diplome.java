@@ -89,7 +89,7 @@ public class Diplome {
 		}
 		   
 		
-		// hashCode() & equals()
+		// hashCode() & equals()   
 
 		@Override
 		public int hashCode() {

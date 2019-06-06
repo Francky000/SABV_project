@@ -27,7 +27,7 @@ public class DaoStatScoreP {
 		// on doit update la table statscore pour ajouter une propriété affich de type varchar 
 		// Une fois cela fait , la méthode ci-dessous sera utilisable 
 		
-		public List<String> listerPourQuizz( Quizz qz  ) {
+		public List<String> listerPourQuizz( Quizz qz  ) {   // inutile pour l'instant 
 
 			Connection			cn		= null;
 			PreparedStatement	stmt	= null;
@@ -44,7 +44,7 @@ public class DaoStatScoreP {
 
 				List<String> stat = new ArrayList<>();
 				while (rs.next()) {
-					stat.add( rs.getString("id_stat_score") );
+					stat.add( rs.getString("id_stat_score") );   
 					
 				}
 				return stat;

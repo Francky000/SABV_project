@@ -26,13 +26,13 @@ public class DaoStatScoreMs {
 		
 		// on doit update la table statscore pour ajouter une propriété affich de type varchar 
 		// Une fois cela fait , la méthode ci-dessous sera utilisable 
-		public List<String> listerPourQuizz( Quizz qz  ) {
+		public List<String> listerPourQuizz( Quizz qz  ) { // Ne sera plus utile pour l'instant 
 
 			Connection			cn		= null;
 			PreparedStatement	stmt	= null;
 			ResultSet 			rs 		= null;
 			String				sql;
-
+   
 			try {
 				cn = dataSource.getConnection();
 
