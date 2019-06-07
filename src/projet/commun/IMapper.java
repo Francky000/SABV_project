@@ -7,17 +7,16 @@ import projet.data.Categorie;
 import projet.data.Compte;
 import projet.data.Memo;
 import projet.data.Personne;
+import projet.data.Theme;
+import projet.data.Visiteur;
 
 
 @Mapper
 public interface IMapper {  
 	
-	Compte update( @MappingTarget Compte target, Compte source  );
+	Theme update( @MappingTarget Theme enCours, Theme theme  );      
 	
 	Categorie update( @MappingTarget Categorie target, Categorie source );
 
-	Personne update( @MappingTarget Personne target, Personne source );
-
-	Memo update( @MappingTarget Memo target, Memo source );
-	
+	Visiteur update( @MappingTarget Visiteur target, Visiteur source );	
 }

@@ -8,7 +8,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import projet.commun.IMapper;
 import projet.dao.DaoCategorie;
-import projet.dao.DaoPersonne;
 import projet.data.Categorie;
 
 
@@ -27,8 +26,7 @@ public class ModelCategorie  {
 	private IMapper			mapper;
     @Inject
 	private DaoCategorie	daoCategorie;
-    @Inject
-	private DaoPersonne		daoPersonne;
+    
 	
 	
 	// Getters 
@@ -77,18 +75,18 @@ public class ModelCategorie  {
 			throw new ExceptionValidation( message.toString().substring(1) );
 		}
 		
-		
-		// Effectue la mise à jour
-		
-		if ( enCours.getLibelleta() == null ) {
-			// Insertion
-			enCours.setLibelleta( daoCategorie.inserer( enCours ) );
-		} else {
-			// modficiation
-			daoCategorie.modifier( enCours );
-		}
-	}
-	
+//		
+//		// Effectue la mise à jour
+//		
+//		if ( enCours.getLibelleta() == null ) {
+//			// Insertion
+//			enCours.setLibelleta( daoCategorie.inserer( enCours ) );
+//		} else {
+//			// modficiation
+//			daoCategorie.modifier( enCours );
+//		}
+//	}
+//	
 	
 //	public void supprimer( Categorie item ) {
 //		
@@ -99,6 +97,6 @@ public class ModelCategorie  {
 //		
 //		daoCategorie.supprimer( item.getId() );
 //		mapper.update( enCours, UtilFX.findNext( liste, item ) );
-//	}
-//	
+	}
+	
 }

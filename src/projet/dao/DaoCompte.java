@@ -124,6 +124,13 @@ public class DaoCompte {
 	
 
 	public Compte retrouver(int idCompte)  {
+		
+		
+		
+		
+		
+		
+		
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;

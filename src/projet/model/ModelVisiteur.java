@@ -7,10 +7,12 @@ import fwk3il.javafx.util.UtilFX;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import projet.commun.IMapper;
-import projet.dao.DaoMemo;
-import projet.dao.DaoPersonne;
+import projet.dao.DaoCategorie;
+import projet.dao.DaoTheme;
+import projet.dao.DaoVisiteur;
 import projet.data.Personne;
 import projet.data.Telephone;
+import projet.data.Visiteur;
 
 public class ModelVisiteur {
 
@@ -44,10 +46,10 @@ public class ModelVisiteur {
 
 	// Actualisations
 
-	public void actualiserListe() {
-		liste.clear();
-		liste.addAll(daoVisiteur.listerTout());
-	}
+//	public void actualiserListe() {
+//		liste.clear();
+//		liste.addAll(daoVisiteur.list());
+//	}
 
 	// Actions
 
@@ -65,15 +67,15 @@ public class ModelVisiteur {
 
 		StringBuilder message = new StringBuilder();
 
-		if (enCours.getNom() == null || enCours.getNom().isEmpty()) {
+		if (enCours.getnom() == null || enCours.getnom().isEmpty()) {
 			message.append("\nLe nom ne doit pas être vide.");
-		} else if (enCours.getNom().length() > 25) {
+		} else if (enCours.getnom().length() > 25) {
 			message.append("\nLe nom est trop long.");
 		}
 
-		if (enCours.getPrenom() == null || enCours.getPrenom().isEmpty()) {
+		if (enCours.getprenom() == null || enCours.getprenom().isEmpty()) {
 			message.append("\nLe Prenom ne doit pas être vide.");
-		} else if (enCours.getPrenom().length() > 25) {
+		} else if (enCours.getprenom().length() > 25) {
 			message.append("\nLe Prenom est trop long.");
 		}
 		
@@ -87,9 +89,9 @@ public class ModelVisiteur {
 
 		// Effectue la mise à jour
 
-		if (enCours.getId() == null) {
+		if (enCours.getIdVisit() == null) {
 			// Insertion
-			enCours.setId(daoVisiteur.inserer(enCours));
+			enCours.setIdVisit(daoVisiteur.inserer(enCours));
 		} else {
 			// modficiation
 			daoVisiteur.modifier(enCours);

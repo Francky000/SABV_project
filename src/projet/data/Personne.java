@@ -35,7 +35,7 @@ public class Personne {
 	}
 	
 	
-	// Getters & setters
+	// Getters & setters    
 
 	public final Property<Integer> idProperty() {
 		return this.id;

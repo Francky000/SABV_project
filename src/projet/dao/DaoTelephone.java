@@ -52,6 +52,17 @@ public class DaoTelephone {
 			throw new RuntimeException(e);
 		} finally {
 			UtilJdbc.close( stmt, cn );
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		}
 	}
 

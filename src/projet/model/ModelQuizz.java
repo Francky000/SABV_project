@@ -7,9 +7,12 @@ import fwk3il.javafx.util.UtilFX;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import projet.commun.IMapper;
-import projet.dao.DaoMemo;
-import projet.dao.DaoPersonne;
+import projet.dao.DaoQuestion;
+import projet.dao.DaoQuizz;
+import projet.dao.DaoTheme;
 import projet.data.Personne;
+import projet.data.Question;
+import projet.data.Quizz;
 import projet.data.Telephone;
 
 
@@ -34,14 +37,18 @@ public class ModelQuizz {
     @Inject
     private DaoTheme			daoTheme;
     @Inject
-    private DaoQuestion			daoQuestion;
+    private DaoQuestion			daoQues;
     
 	
 	
 	// Getters 
 	
-	public ObservableList<Quizz> getListeQuizz() {
-		return liste;
+    public ObservableList<Quizz> getListeQuizz() {
+		return listeQuizz;
+	}
+    
+    public ObservableList<Question> getListeQues() {
+		return listeQues;
 	}
 	
 	public Quizz getEnCoursQuizz() {
@@ -51,15 +58,16 @@ public class ModelQuizz {
 	public Question getEnCoursQues() {
 		return enCoursQues;
 	}
+	
 
 	
 	// Actualisations
 	
-	public void actualiserListe() {
-		listeQuizz.clear();
-		listeQuizz.addAll( daoQuizz.listerTout() );
-		listeQues.clear();
-		listeQues.addAll( daoQues.listerTout() );
-	}
+//	public void actualiserListe() {
+//		listeQuizz.clear();
+//		listeQuizz.addAll( daoQuizz.ListQuizz());
+//		listeQues.clear();
+//		listeQues.addAll( daoQues.listReponse(getEnCoursQues()) );
+//	}
 	
 }
