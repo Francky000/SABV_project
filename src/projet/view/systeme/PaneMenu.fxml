@@ -5,29 +5,17 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane focusTraversable="true" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.systeme.ControllerMenu">
+<BorderPane xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.systeme.ControllerAccueil">
+   <center>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="550.0" BorderPane.alignment="CENTER" />
+   </center>
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu fx:id="menuDonnees" mnemonicParsing="false" text="Données">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#doAfficherListMemos" text="Mémos" />
-                  <MenuItem fx:id="menuItemPersonnes" mnemonicParsing="false" onAction="#doAfficherListePersonnes" text="Personnes" />
-                  <MenuItem fx:id="menuItemCategories" mnemonicParsing="false" onAction="#doAfficherListeCategories" text="Catégories" />
-                  <MenuItem fx:id="menuItemComptes" mnemonicParsing="false" onAction="#doAfficherListeComptes" text="Comptes" />
-               </items>
-          </Menu>
-          <Menu fx:id="menuTests" mnemonicParsing="false" text="Tests">
+          <Menu mnemonicParsing="false" text="Application">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#doTestDaoMemo" text="DaoMenu" />
-                  <MenuItem mnemonicParsing="false" onAction="#doTestDaoCategorie" text="DaoCategorie" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Système">
-            <items>
-                  <MenuItem fx:id="menuItemSeConnecter" mnemonicParsing="false" onAction="#doSeDeconnecter" text="Se connecter" />
-                  <MenuItem fx:id="menuItemSeDeconnecter" mnemonicParsing="false" onAction="#doSeDeconnecter" text="Se déconnecter" />
-              <MenuItem id="menuItemQuitter" mnemonicParsing="false" onAction="#doQuitter" text="Quitter" />
+              <MenuItem mnemonicParsing="false" onAction="#doMenu" text="Acceuil" />
+                  <MenuItem mnemonicParsing="false" onAction="#doQuitter" text="Quitter" />
             </items>
           </Menu>
         </menus>
