@@ -32,7 +32,7 @@ public class ModelTheme {
 		
 		public ObservableList<Theme> getListe() {
 			return liste;
-		}              
+		}                 
 
 		public Theme getEnCours() {        
 			return enCours;
