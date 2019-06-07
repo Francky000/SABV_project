@@ -41,7 +41,7 @@ public class ModelTheme {
 		// Actualisations
 		
 		public void actualiserListe() {
-			liste.clear();
+			liste.clear();    
 			liste.addAll( daoTheme.listerTout() );
 	 	}
 		
