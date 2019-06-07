@@ -64,7 +64,7 @@ public class DaoQuestion {
 			ResultSet 			rs 		= null;
 			String				sql;    
 
-			try {                 
+			try {                  
 				cn = dataSource.getConnection();
      
 				sql = "SELECT libelle_rt FROM reponse_rt ORDER BY id_rt ";

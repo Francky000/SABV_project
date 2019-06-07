@@ -1,5 +1,4 @@
 package projet;
-<<<<<<< HEAD
 
 import javax.sql.DataSource;
 import javax.swing.JOptionPane;
@@ -14,69 +13,39 @@ import projet.commun.IMapper;
 import projet.view.ManagerGui;
 
 
-public class MainProjet {  
-          
-=======
->>>>>>> branch 'master' of https://github.com/i1-2019-fokaline/projet.git
-	
-<<<<<<< HEAD
-	// main()        
-	
-	public static void main(String[] args) {      
-=======
-import java.io.IOException;
->>>>>>> branch 'master' of https://github.com/i1-2019-fokaline/projet.git
+public class MainProjet {
 
-<<<<<<< HEAD
-		    
-=======
-import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.fxml.FXMLLoader;
-
-
-public class MainProjet extends Application {
 	
-	///private static ModelLabyrinthe modelLabyrinthe =new  ModelLabyrinthe();
-	private static Scene scene;
+	// main()
 	
-//	public static ModelLabyrinthe getModelLabyrinthe() {
-//		return modelLabyrinthe;
-//	}
+	public static void main(String[] args) {   
 
-	@Override
-	public void start(Stage primaryStage) {
->>>>>>> branch 'master' of https://github.com/i1-2019-fokaline/projet.git
+		
 		try {
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("Vue.fxml"));
-			 scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
+
+			// JDBC - DataSource
+			DataSource dataSource = new DataSourceSingleConnection( MainProjet.class.getResourceAsStream( "/META-INF/jdbc.properties" ) );
+
+			// Context
+			IContext context = new ContextStandard();
+			context.addBean( dataSource );
+			context.addBean( Mappers.getMapper( IMapper.class ) );
+
+			// IManagerGui
+			IManagerGui managerGui = new ManagerGui( context );
+			
+			// Programme la fermeture des ressources
+			managerGui.addRessourcesToClose( dataSource );
+			
+			// Démarre l'application
+			managerGui.launch();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Impossible de démarrer l'application.", "", JOptionPane.ERROR_MESSAGE);
+			System.exit(1);
 		}
-	}
-	
-	public static void showViewMenu() throws IOException{
-		Pane pane=FXMLLoader.load(MainProjet.class.getResource("Vue2.fxml"));
-		scene.setRoot(pane);
-	}
-	
-	public static void showViewQuizz() throws IOException{
-		Pane pane=FXMLLoader.load(MainProjet.class.getResource("Vue.fxml"));
-		scene.setRoot(pane);
-	}
-	
-//	public static void showViewSolution() throws IOException{
-//		Pane pane=FXMLLoader.load(Main.class.getResource("ViewSolution.fxml"));
-//		scene.setRoot(pane);
-//	}
-	
-	public static void main(String[] args) {
-		launch(args);
-	}
+		System.exit(0);
+    }
+  
 }
