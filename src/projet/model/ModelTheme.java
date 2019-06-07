@@ -3,26 +3,26 @@ package projet.model;
 import javax.inject.Inject;
 
 import fwk3il.commun.exception.ExceptionValidation;
-import fwk3il.javafx.util.UtilFX;
-import javafx.collections.FXCollections;
+import fwk3il.javafx.util.UtilFX;          
+import javafx.collections.FXCollections;      
 import javafx.collections.ObservableList;
 import projet.commun.IMapper;
 import projet.dao.DaoCompte;
 import projet.dao.DaoTheme;
-import projet.data.Compte;
-import projet.data.Personne;
+import projet.data.Compte;            
+import projet.data.Personne;                   
 import projet.data.Theme;
-
-public class ModemTheme {
+                                        
+public class ModelTheme {
 
 	// Données observables 
 	
-		private final ObservableList<Theme> liste = FXCollections.observableArrayList();
+		private final ObservableList<Theme> liste = FXCollections.observableArrayList();   
 		
 		private final Theme		enCours = new Theme();
 		
 
-		// Autres champs
+		// Autres champs    
 	    @Inject
 		private IMapper			mapper;
 	    @Inject
@@ -34,7 +34,7 @@ public class ModemTheme {
 			return liste;
 		}              
 
-		public Theme getEnCours() {
+		public Theme getEnCours() {        
 			return enCours;
 		}
 		
