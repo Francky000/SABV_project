@@ -26,9 +26,9 @@ public class ModelTheme {
 	    @Inject
 		private IMapper			mapper;
 	    @Inject
-		private DaoTheme		daoTheme;
+		private DaoTheme		daoTheme;      
 	    
-	 // Getters
+	 // Getters     
 		
 		public ObservableList<Theme> getListe() {
 			return liste;

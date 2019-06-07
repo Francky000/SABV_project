@@ -52,7 +52,7 @@ public class DaoVisiteur {
 			
 				} catch (SQLException e) {
 					throw new RuntimeException(e);
-				} finally {
+				} finally {    
 					UtilJdbc.close( stmt, cn );
 				}
 
