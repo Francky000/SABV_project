@@ -52,10 +52,10 @@ public class ModelCategorie  {
 
 	// Actions
 	
-	public void preparerAjouter() {
-		mapper.update( enCours, new Categorie() );
-	}
-	
+//	public void preparerAjouter() {
+//		mapper.update( enCours, new Categorie() );
+//	}
+//	
 	public void preparerModifier( Categorie item ) {
 		mapper.update( enCours, item );
 	}
@@ -67,9 +67,9 @@ public class ModelCategorie  {
 		
 		StringBuilder message = new StringBuilder();
 
-		if( enCours.getLibelle() == null || enCours.getLibelle().isEmpty() ) {
+		if( enCours.getTranche() == null || enCours.getTranche().isEmpty() ) {
 			message.append( "\nLe libellé ne doit pas être vide." );
-		} else  if ( enCours.getLibelle().length()> 25 ) {
+		} else  if ( enCours.getTranche().length()> 25 ) {
 			message.append( "\nLe libellé est trop long : 25 maxi." );
 		}
 		
@@ -80,9 +80,9 @@ public class ModelCategorie  {
 		
 		// Effectue la mise à jour
 		
-		if ( enCours.getId() == null ) {
+		if ( enCours.getLibelleta() == null ) {
 			// Insertion
-			enCours.setId( daoCategorie.inserer( enCours ) );
+			enCours.setLibelleta( daoCategorie.inserer( enCours ) );
 		} else {
 			// modficiation
 			daoCategorie.modifier( enCours );
@@ -90,15 +90,15 @@ public class ModelCategorie  {
 	}
 	
 	
-	public void supprimer( Categorie item ) {
-		
-		// Vérifie que la catégorie est vide
-		if ( daoPersonne.compterourCategorie( item.getId() ) != 0 ) {
-			throw new ExceptionValidation( "La catégorie n'est pas vide." ) ;
-		}
-		
-		daoCategorie.supprimer( item.getId() );
-		mapper.update( enCours, UtilFX.findNext( liste, item ) );
-	}
-	
+//	public void supprimer( Categorie item ) {
+//		
+//		// Vérifie que la catégorie est vide
+//		if ( daoPersonne.compterourCategorie( item.getId() ) != 0 ) {
+//			throw new ExceptionValidation( "La catégorie n'est pas vide." ) ;
+//		}
+//		
+//		daoCategorie.supprimer( item.getId() );
+//		mapper.update( enCours, UtilFX.findNext( liste, item ) );
+//	}
+//	
 }
