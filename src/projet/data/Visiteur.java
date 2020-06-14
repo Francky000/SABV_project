@@ -23,11 +23,11 @@ public class Visiteur {
  		public Visiteur() {
  		}
 
- 		public Visiteur( final int id_visit, final String nom , final String prenom, final int idDip,final int modejeu) {
+ 		public Visiteur( final int id_visit, final String nom , final String prenom, final int modejeu) {
  			setIdVisit(id_visit);
  			setNomV(nom);
  			setPrenomV(prenom);
- 			setIdDip(idDip);
+ 			//setIdDip(idDip);
  			setModejeu(modejeu);    
  			
  		}

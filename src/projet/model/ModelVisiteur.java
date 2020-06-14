@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import projet.commun.IMapper;
 import projet.dao.DaoCategorie;
+import projet.dao.DaoDiplome;
 import projet.dao.DaoTheme;
 import projet.dao.DaoVisiteur;
 import projet.data.Personne;
@@ -32,6 +33,15 @@ public class ModelVisiteur {
 	private DaoCategorie daoCategorie;
 	@Inject
 	private DaoTheme daoTheme;
+	@Inject
+	private DaoDiplome daodiplome;
+	@Inject
+	private ModelDiplome modeldiplome;
+	@Inject
+	private ModelTheme modeltheme;
+	
+	
+	
 	
 	//creer les getters/setters du mode de jeu dans le daoVisiteur
 	// Getters
@@ -74,28 +84,30 @@ public class ModelVisiteur {
 		}
 
 		if (enCours.getprenom() == null || enCours.getprenom().isEmpty()) {
-			message.append("\nLe Prenom ne doit pas être vide.");
+			message.append("\nLe prenom ne doit pas être vide.");
 		} else if (enCours.getprenom().length() > 25) {
-			message.append("\nLe Prenom est trop long.");
+			message.append("\nLe prenom est trop long.");
+		}
+		if (enCours.getModejeu() == null) {
+			message.append("\nLe mode de jeu doit être indiqué.");
+		}
+		if (modeldiplome.getEnCours().getlibelleta() == null) {
+			message.append("\nLa tranche d'age doit être indiquée.");
 		}
 		
-		if (enCours.getModejeu() == null) {
-			message.append("\nLe catégorie doit être indiquée.");
-		}
-
 		if (message.length() > 0) {
 			throw new ExceptionValidation(message.toString().substring(1));
 		}
 
-		// Effectue la mise à jour
-
-		if (enCours.getIdVisit() == null) {
-			// Insertion
-			enCours.setIdVisit(daoVisiteur.inserer(enCours));
-		} else {
-			// modficiation
-			daoVisiteur.modifier(enCours);
-		}
+//		// Effectue la mise à jour
+//
+//		if (enCours.getIdVisit() == null) {
+//			// Insertion
+//			enCours.setIdVisit(daoVisiteur.inserer(enCours));
+//		} else {
+//			// modficiation
+//			daoVisiteur.modifier(enCours);
+//		}
 	}
 
 }

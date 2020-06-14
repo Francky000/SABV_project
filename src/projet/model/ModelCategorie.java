@@ -16,7 +16,7 @@ public class ModelCategorie  {
 	
 	// Données observables 
 	
-	private final ObservableList<Categorie> liste = FXCollections.observableArrayList(); 
+	private final ObservableList<String> liste = FXCollections.observableArrayList(); 
 	
 	private final Categorie	enCours = new Categorie();
 
@@ -31,7 +31,7 @@ public class ModelCategorie  {
 	
 	// Getters 
 	
-	public ObservableList<Categorie> getListe() {
+	public ObservableList<String> getListe() {
 		return liste;
 	}
 	
@@ -88,15 +88,7 @@ public class ModelCategorie  {
 //	}
 //	
 	
-//	public void supprimer( Categorie item ) {
-//		
-//		// Vérifie que la catégorie est vide
-//		if ( daoPersonne.compterourCategorie( item.getId() ) != 0 ) {
-//			throw new ExceptionValidation( "La catégorie n'est pas vide." ) ;
-//		}
-//		
-//		daoCategorie.supprimer( item.getId() );
-//		mapper.update( enCours, UtilFX.findNext( liste, item ) );
+
 	}
 	
 }

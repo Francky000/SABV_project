@@ -14,7 +14,7 @@ public class Diplome {
 	ID_TRANCHE_AGE NUMBER(*,0) */
 	
 	private final Property<Integer>	id_dip		= new SimpleObjectProperty<>();
-	private final Property<Integer>	id_tr		= new SimpleObjectProperty<>();
+	private final Property<String>	libelleta		= new SimpleObjectProperty<>();
 	private final Property<String>	libelle_dip	= new SimpleObjectProperty<>();
 	private final Property<Integer>	score_dip		= new SimpleObjectProperty<>();
 	
@@ -24,9 +24,9 @@ public class Diplome {
 	public Diplome() {
 	}
 	
-	public Diplome( int id_dip, int id_tr, String libelle_dip, int score_dip ) {
+	public Diplome( int id_dip, String libelleta, String libelle_dip, int score_dip ) {
 		setIdDip(id_dip);
-		setIdTr(id_tr);
+		setlibelleta(libelleta);
 		setlibelledip(libelle_dip);
 		setscoredip(score_dip);
 	}
@@ -45,16 +45,16 @@ public class Diplome {
 			this.id_dipProperty().setValue(id_dip);
 		}
 		
-		public final Property<Integer> idTrProperty() {
-			return this.id_tr;
+		public final Property<String> libelletaProperty() {
+			return this.libelleta;
 		}
 
-		public final Integer getIdTr() {
-			return this.idTrProperty().getValue();
+		public final String getlibelleta() {
+			return this.libelletaProperty().getValue();
 		}
 
-		public final void setIdTr(final Integer id_dip) {
-			this.idTrProperty().setValue(id_dip);
+		public final void setlibelleta(final String libelleta) {
+			this.libelletaProperty().setValue(libelleta);
 		}
 		
 		public final Property<String> libelledipProperty() {

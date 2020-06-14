@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import projet.commun.IMapper;
 import projet.dao.DaoCategorie;
 import projet.dao.DaoQuestion;
+import projet.dao.DaoQuizz;
 import projet.dao.DaoTheme;
 import projet.dao.DaoVisiteur;
 import projet.data.Personne;
@@ -31,28 +32,14 @@ public class ModelReponse {
 	@Inject
 	private DaoQuestion daoQuestion;
 	@Inject
+	private DaoQuizz daoQuizz;
+	@Inject
 	private DaoTheme daoTheme;
 	@Inject
 	private DaoCategorie daoCategorie;
-
+int b=0;int d;
 	// Modèles
 	private ModelQuizz modelQuizz;
-
-	@Inject
-	private int score = 0;
-
-	// Boutons
-
-	@Inject
-	private Button ButtRep1;
-	@Inject
-	private Button ButtRep2;
-	@Inject
-	private Button ButtRep3;
-	@Inject
-	private Button ButtRep4;
-	@Inject
-	private Button ButtIndice;
 
 	// Getters
 
@@ -66,83 +53,62 @@ public class ModelReponse {
 
 	// Actualisations
 
-	public void actualiserListe() {
+	public void actualiserListe(String libelleques) {
+		
 		liste.clear();
-		liste.addAll((Reponse) daoQuestion.listReponse(modelQuizz.getEnCoursQues()));
+		liste.addAll( daoQuestion.listReponse(daoQuestion.valeurIdQues(libelleques)) );
+	}
+	
+	public void actualiserListe2() {
+		//b++;
+		liste.clear();
+		liste.addAll( daoQuestion.listReponse(d) );
+		//System.out.println(liste.get(0));
+		d--;
 	}
 
 	// Actions
 
-	public void AfficherQuestion() {
-		int i = 0;
-		for (Reponse reponse : liste) {
-			if (reponse.getIdques() == modelQuizz.getEnCoursQues().getIdques()) {
-				i++;
-				if (i == 1)
-					ButtRep1.setText(reponse.getlibellert());
-				if (i == 2)
-					ButtRep2.setText(reponse.getlibellert());
-				if (i == 3)
-					ButtRep3.setText(reponse.getlibellert());
-				if (i == 4)
-					ButtRep4.setText(reponse.getlibellert());
-			}
-		}
-	}
+//	public void AfficherQuestion() {
+//		int i = 0;
+//		for (Reponse reponse : liste) {
+//			if (reponse.getIdques() == modelQuizz.getEnCoursQues().getIdques()) {
+//				i++;
+//				if (i == 1)
+//					ButtRep1.setText(reponse.getlibellert());
+//				if (i == 2)
+//					ButtRep2.setText(reponse.getlibellert());
+//				if (i == 3)
+//					ButtRep3.setText(reponse.getlibellert());
+//				if (i == 4)
+//					ButtRep4.setText(reponse.getlibellert());
+//			}
+//		}
+//	}
 
 	// Si on clique sur l'un des 4 bouttons ca appelle cette methode
-	public void BonneReponse() {
-		// coloration verte de la bonne reponse
-
-		if (ButtRep1.getText().equals(enCours.getlibellert()) && enCours.getverite() == 1) {
-			System.out.println("BONNE REPONSE");
-			score++;
-
-		} else if (ButtRep2.getText().equals(enCours.getlibellert()) && enCours.getverite() == 1) {
-			System.out.println("BONNE REPONSE");
-			score++;
-		} else if (ButtRep3.getText().equals(enCours.getlibellert()) && enCours.getverite() == 1) {
-			System.out.println("BONNE REPONSE");
-			score++;
-		} else if (ButtRep4.getText().equals(enCours.getlibellert()) && enCours.getverite() == 1) {
-			System.out.println("BONNE REPONSE");
-			score++;
-		} else {
-			// coloration rouge du choix de reponse
-			System.out.println("MAUVAISE REPONSE");
-		}
-	}
+//	public void BonneReponse() {
+//		// coloration verte de la bonne reponse
+//
+//		if (ButtRep1.getText().equals(enCours.getlibellert()) && enCours.getverite() == 1) {
+//			System.out.println("BONNE REPONSE");
+//			score++;
+//
+//		} else if (ButtRep2.getText().equals(enCours.getlibellert()) && enCours.getverite() == 1) {
+//			System.out.println("BONNE REPONSE");
+//			score++;
+//		} else if (ButtRep3.getText().equals(enCours.getlibellert()) && enCours.getverite() == 1) {
+//			System.out.println("BONNE REPONSE");
+//			score++;
+//		} else if (ButtRep4.getText().equals(enCours.getlibellert()) && enCours.getverite() == 1) {
+//			System.out.println("BONNE REPONSE");
+//			score++;
+//		} else {
+//			// coloration rouge du choix de reponse
+//			System.out.println("MAUVAISE REPONSE");
+//		}
+//	}
 
 	
 
-//	public void validerMiseAJour() {
-//
-//		// Vérifie la validité des données
-//		
-//		StringBuilder message = new StringBuilder();
-//		
-//		if( enCours.getNom() == null || enCours.getNom().isEmpty() ) {
-//			message.append( "\nLe nom ne doit pas être vide." );
-//		} else  if ( enCours.getNom().length()> 25 ) {
-//			message.append( "\nLe nom est trop long." );
-//		}
-//
-//		if( enCours.getPrenom() == null || enCours.getPrenom().isEmpty() ) {
-//			message.append( "\nLe prénom ne doit pas être vide." );
-//		} else if ( enCours.getPrenom().length()> 25 ) {
-//			message.append( "\nLe prénom est trop long." );
-//		}
-//
-//		if( enCours.getCategorie() == null ) {
-//			message.append( "\nLe catégorie doit être indiquée." );
-//		}
-//		
-//		if ( message.length() > 0 ) {
-//			throw new ExceptionValidation( message.toString().substring(1) );
-//		}
-//
-//		
-//		
-//	
-//}	
 }

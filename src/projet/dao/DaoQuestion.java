@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 
 import projet.data.Question;
 import projet.data.Quizz;
-          
+import projet.data.Reponse;
 import fwk3il.dao.jdbc.UtilJdbc;
 
 
@@ -29,26 +29,26 @@ public class DaoQuestion {
 		private DataSource		dataSource;
 		
 		
-		public List<String> listReponseImg(Question question ) {
+		public List<Reponse> listReponseImg(Integer Idques	 ) {
 
 			Connection			cn		= null;
 			PreparedStatement	stmt	= null;
 			ResultSet 			rs 		= null;
 			String				sql;    
-
+   
 			try {                 
 				cn = dataSource.getConnection();
      
-				sql = "SELECT  nom_mr FROM media_reponse ORDER BY id_mr ";
+				sql = "SELECT  nom_mr FROM media_reponse WHERE Id_ques = ?  IdORDER BY id_mr ";
 				stmt = cn.prepareStatement(sql);
-				stmt.setInt( 1, question.getIdques() );
+				stmt.setInt( 1, Idques );
 				rs = stmt.executeQuery();
 
-				List<String> Ques = new ArrayList<>();      
+				List<Reponse>Rep = new ArrayList<>();      
 				while (rs.next()) {
-					Ques.add( rs.getString("nom_mr") );
+					Rep.add( construireReponse(rs) );
 									}
-				return Ques;
+				return Rep;
 
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
@@ -57,7 +57,7 @@ public class DaoQuestion {
 			}                                  
 		}  
 		
-		public List<String> listReponse(Question question ) {
+		public List<Reponse> listReponse(Integer Idques ) {
 
 			Connection			cn		= null;
 			PreparedStatement	stmt	= null;
@@ -67,22 +67,137 @@ public class DaoQuestion {
 			try {                  
 				cn = dataSource.getConnection();
      
-				sql = "SELECT libelle_rt FROM reponse_rt ORDER BY id_rt ";
+				sql = "SELECT * FROM reponse_texte WHERE Id_ques = ? ORDER BY id_rt ";
 				stmt = cn.prepareStatement(sql); 
-				stmt.setInt( 1, question.getIdques() );
+				stmt.setInt( 1, Idques );
 				rs = stmt.executeQuery();
 
-				List<String> Ques = new ArrayList<>();      
+				List<Reponse> Reponse = new ArrayList<>();      
 				while (rs.next()) {
-					Ques.add( rs.getString("libelle_rt") );
+					Reponse.add( construireReponse(rs) );
 									}
-				return Ques;
+				return Reponse;
 
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
 			} finally {       
 				UtilJdbc.close( rs, stmt, cn );
 			}                                  
-		}  
+		}
 		
+		public int valeurIdQues(String libelleques)  {
+
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs 		= null;
+			String 				sql;
+
+			try {
+				cn = dataSource.getConnection();
+
+				sql = "select id_ques from question where libelle_ques =  ?";
+				stmt = cn.prepareStatement( sql );
+				stmt.setString(	1, libelleques );
+				rs = stmt.executeQuery();
+				rs.next();
+				return rs.getInt("id_ques");
+				
+				
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close(rs, stmt, cn );
+			}  
+
+			
+		}
+		
+		public String ReponseJuste(Integer idques ) {
+
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs 		= null;
+			String				sql;    
+
+			try {                  
+				cn = dataSource.getConnection();
+     
+				sql = "SELECT r.libelle_rt FROM reponse_texte r INNER JOIN question q ON r.id_ques = q.id_ques WHERE r.id_ques  = ? AND r.verite_rt = ? ORDER BY r.libelle_rt ";
+				stmt = cn.prepareStatement(sql); 
+				stmt.setInt( 1, idques );
+				stmt.setInt( 2, 1 );
+				rs = stmt.executeQuery();
+				
+				rs.next();
+				return rs.getString("libelle_rt");
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {       
+				UtilJdbc.close( rs, stmt, cn );    
+			}                                    
+		}
+		
+		
+		public String Rechindice(Integer idques ) {
+
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs 		= null;
+			String				sql;    
+
+			try {                  
+				cn = dataSource.getConnection();
+     
+				sql = "SELECT indice FROM question  WHERE id_ques  = ? ORDER BY id_ques ";
+				stmt = cn.prepareStatement(sql); 
+				stmt.setInt( 1, idques );
+				rs = stmt.executeQuery();
+				
+				rs.next();
+				return rs.getString("indice");
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {       
+				UtilJdbc.close( rs, stmt, cn );    
+			}                                    
+		}
+		
+		public String Rechinfos(Integer idques ) {
+
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs 		= null;
+			String				sql;    
+
+			try {                  
+				cn = dataSource.getConnection();
+     
+				sql = "SELECT bulle_infos FROM question  WHERE id_ques  = ? ORDER BY id_ques ";
+				stmt = cn.prepareStatement(sql); 
+				stmt.setInt( 1, idques );
+				rs = stmt.executeQuery();
+				
+				rs.next();
+				return rs.getString("bulle_infos");
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {       
+				UtilJdbc.close( rs, stmt, cn );    
+			}                                    
+		}
+		
+		private Reponse construireReponse( ResultSet rs ) throws SQLException {
+			Reponse reponse  = new Reponse ();
+			reponse.setIdrt( rs.getInt( "id_rt" ) );
+			reponse.setlibellert(rs.getString("libelle_rt"));
+			reponse.setverite(rs.getInt("verite_rt"));			
+			reponse.setIdques(rs.getInt("id_ques") );
+			return reponse;
+		}
+		
+		
+	
 }

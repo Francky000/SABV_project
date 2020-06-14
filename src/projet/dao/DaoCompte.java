@@ -24,7 +24,7 @@ public class DaoCompte {
 	@Inject
 	private DataSource		dataSource;
 	@Inject
-	private DaoRole			daoRole;
+	//private DaoRole			daoRole;
 
 	
 	// Actions
@@ -58,7 +58,7 @@ public class DaoCompte {
 		}
 
 		// Insère les rôles
-		daoRole.insererPourCompte( compte );
+		//daoRole.insererPourCompte( compte );
 		
 		// Retourne l'identifiant
 		return compte.getId();
@@ -91,7 +91,7 @@ public class DaoCompte {
 		}
 
 		// Modifie les rôles
-		daoRole.modifierPourCompte( compte );
+		//daoRole.modifierPourCompte( compte );
 	}
 
 	
@@ -103,7 +103,7 @@ public class DaoCompte {
 		String 				sql;
 
 		// Supprime les rôles
-		daoRole.supprimerPourCompte( idCompte );
+		//daoRole.supprimerPourCompte( idCompte );
 
 		try {
 			cn = dataSource.getConnection();
@@ -254,7 +254,7 @@ public class DaoCompte {
 		compte.setPseudo( rs.getString( "Pseudo" ) );
 		compte.setMotDePasse( rs.getString( "MotDePasse" ) );
 		compte.setEmail( rs.getString( "Email" ) );
-		compte.getRoles().addAll( daoRole.listerPourCompte( compte ) );
+		//compte.getRoles().addAll( daoRole.listerPourCompte( compte ) );
 		return compte;
 	}
 	

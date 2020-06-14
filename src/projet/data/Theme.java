@@ -9,7 +9,7 @@ import javafx.beans.property.SimpleObjectProperty;
 public class Theme {
 
 	  // Données observables
-		private final Property<Integer>	idth		= new SimpleObjectProperty<>();
+
 		private final Property<Integer>	Numth	= new SimpleObjectProperty<>();
 		private final Property<String>	libelleth = new SimpleObjectProperty<>();
 		
@@ -18,8 +18,8 @@ public class Theme {
 			public Theme() {
 			}
 
-			public Theme( final int idth, final int Numth , final String libelleth ) {
-				setIdth(idth);
+			public Theme( final int Numth , final String libelleth ) {
+
 				setNumth(Numth);
 				setlibelle(libelleth);
 		
@@ -28,21 +28,11 @@ public class Theme {
 			
 	// Getters et Setters
 
-			public final Property<Integer> idthProperty() {
-				return this.idth;
-			}
-
-			public final Integer getIdth() {
-				return this.idthProperty().getValue();
-			}
-
-			public final void setIdth(final Integer idth) {
-				this.idthProperty().setValue(idth);
-			}
-
+			
 			public final Property<Integer> NumthProperty() {
 				return this.Numth;
 			}
+			
 			
 			public final Integer getNumth() {
 				return this.NumthProperty().getValue();
@@ -76,7 +66,7 @@ public class Theme {
 
 			@Override
 			public int hashCode() {
-				return Objects.hash(idth.getValue() );
+				return Objects.hash(Numth.getValue() );
 			}
 			
 			@Override
@@ -88,7 +78,7 @@ public class Theme {
 				if (getClass() != obj.getClass())
 					return false;
 				Theme other = (Theme) obj;
-				return Objects.equals(idth.getValue(), other.idth.getValue() );
+				return Objects.equals(Numth.getValue(), other.Numth.getValue() );
 			}  
 			
 			

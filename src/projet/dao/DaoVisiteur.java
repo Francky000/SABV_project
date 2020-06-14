@@ -38,28 +38,31 @@ public class DaoVisiteur {
 					cn = dataSource.getConnection();
 
 					// Insère la personne
-					sql = "{ CALL tuto_visiteur_insert( ?, ?, ?, ?, ? ) }";
+					sql = "{ CALL tuto_visiteur_insert( ?, ?, ?, ? ) }";
 					stmt = cn.prepareCall( sql );
-					stmt.setInt(	1, visiteur.getIdDip() );
-					stmt.setString(	2, visiteur.getnom() );
-					stmt.setString(	3, visiteur.getprenom() );
+					stmt.setString(	1, visiteur.getnom() );
+					stmt.setString(	2, visiteur.getprenom() );
+					///System.out.println(visiteur.getIdDip());
+					//stmt.setInt(	3,visiteur.getIdDip());
+					//stmt.registerOutParameter( 3, Types.INTEGER );
+					stmt.setInt(	3, visiteur.getModejeu());
 					stmt.registerOutParameter( 4, Types.INTEGER );
-					stmt.setInt(	5, visiteur.getModejeu());
+					
 					stmt.executeUpdate();
 
 					// Récupère l'identifiant généré par le SGBD   
-					visiteur.setIdVisit( stmt.getInt( 4 ) );
+					visiteur.setIdVisit( stmt.getInt( 4 ) );           
 			
 				} catch (SQLException e) {
-					throw new RuntimeException(e);
+					throw new RuntimeException(e);  
 				} finally {    
 					UtilJdbc.close( stmt, cn );
 				}
 
 			
-				
+				    
 				// Retourne l'identifiant
-				return visiteur.getIdDip() ;
+				return visiteur.getIdVisit() ;
 			}
 			
 			  
@@ -73,12 +76,13 @@ public class DaoVisiteur {
 					cn = dataSource.getConnection();
 
 					// Modifie le visiteur
-					sql = "UPDATE visiteur SET id_dipl = ?, nom = ?, prenom = ?, modejeu = ? WHERE id_visit =  ?";
+					sql = "UPDATE visiteur SET nom = ?, prenom = ?, modejeu = ? WHERE id_visit =  ?";
 					stmt = cn.prepareStatement( sql );
-					stmt.setInt(	1, visiteur.getIdDip());
-					stmt.setString(	2, visiteur.getnom() );
-					stmt.setString(	3, visiteur.getprenom() );
-					stmt.setInt(	4, visiteur.getModejeu());
+					//stmt.setInt(	1, visiteur.getIdVisit());
+					stmt.setString(	1, visiteur.getnom() );
+					stmt.setString(	2, visiteur.getprenom() );
+					stmt.setInt(	3, visiteur.getModejeu());
+					stmt.setInt(	4, visiteur.getIdVisit());
 					stmt.executeUpdate();
 					
 				} catch (SQLException e) {

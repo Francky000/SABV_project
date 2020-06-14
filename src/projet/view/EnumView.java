@@ -6,41 +6,35 @@ import javafx.scene.layout.Pane;
 public enum EnumView implements IEnumView {
 
 	// Valeurs
-<<<<<<< HEAD
 	
-//	Info				( "systeme/ViewInfo.fxml" ),
-//	Connexion			( "systeme/ViewConnexion.fxml" ),
-//	CompteListe			( "compte/ViewCompteListe.fxml" ),
-//	CompteForm			( "compte/ViewCompteForm.fxml" ),
-//	CategorieListe		( "personne/ViewCategorieListe.fxml" ),
-//	CategorieForm		( "personne/ViewCategorieForm.fxml" ),
-//	PersonneListe		( "personne/ViewPersonneListe.fxml" ),
-//	PersonneForm		( "personne/ViewPersonneForm.fxml" ),
-//	MemoListe			( "memo/ViewMemoListe.fxml" ),
-//	MemoForm			( "memo/ViewMemoForm.fxml" ),
-//	TestDaoCategorie	( "test/ViewTestDaoCategorie.fxml" ),
-//	TestDaoMemo			( "test/ViewTestDaoMemo.fxml" ),
-
 	Menu			( "menu/menu.fxml" ),
-	Quizz		( "quizz/quizz.fxml" ),
-	PaneMenu    ("systeme/PaneMenu.fxml")
+	Quizz		    ( "quizz/quizz.fxml" ),
+	PaneMenu        ("systeme/PaneMenu.fxml"),
+	Quizz_indice    ("quizzindice/quizz_indice.fxml"),
+	Felicitations   ("felicitation/felicitation.fxml"),
+	Diplome 		 ( "diplome/diplome.fxml" ),
+	DiplomeParcours  ( "diplomeparcours/diplomeparcours.fxml" ),
+	DANSLEAU         ( "DANSLEAU/DANSLEAU.fxml" ),
+	FROID             ( "FROID/FROID.fxml" ),
+	LELAIT           ( "LELAIT/LELAIT.fxml" ),
+	LESINGE          (  "LESINGE/LESINGE.fxml" ),
+	LONGCOU          ( "LONGCOU/LONGCOU.fxml" ),
+	RESPIRATION      ( "RESPIRATION/RESPIRATION.fxml" )
 	;
-=======
->>>>>>> branch 'master' of https://github.com/i1-2019-fokaline/projet.git
-
-	Info("systeme/ViewInfo.fxml"), 
-	Connexion("accueil/ViewAccueil.fxml"),
-	Menu("menu/Vue2.fxml"),
-	CompteListe("compte/ViewCompteListe.fxml"), 
-	CompteForm("compte/ViewCompteForm.fxml"),
-	CategorieListe("personne/ViewCategorieListe.fxml"), 
-	CategorieForm("personne/ViewCategorieForm.fxml"),
-	PersonneListe("personne/ViewPersonneListe.fxml"), 
-	PersonneForm("personne/ViewPersonneForm.fxml"),
-	MemoListe("memo/ViewMemoListe.fxml"), 
-	MemoForm("memo/ViewMemoForm.fxml"),
-	TestDaoCategorie("test/ViewTestDaoCategorie.fxml"), 
-	TestDaoMemo("test/ViewTestDaoMemo.fxml"),;
+//
+//	Info("systeme/ViewInfo.fxml"), 
+//	Connexion("accueil/ViewAccueil.fxml"),
+//	Menu("menu/Vue2.fxml"),
+//	CompteListe("compte/ViewCompteListe.fxml"), 
+//	CompteForm("compte/ViewCompteForm.fxml"),
+//	CategorieListe("personne/ViewCategorieListe.fxml"), 
+//	CategorieForm("personne/ViewCategorieForm.fxml"),
+//	PersonneListe("personne/ViewPersonneListe.fxml"), 
+//	PersonneForm("personne/ViewPersonneForm.fxml"),
+//	MemoListe("memo/ViewMemoListe.fxml"), 
+//	MemoForm("memo/ViewMemoForm.fxml"),
+//	TestDaoCategorie("test/ViewTestDaoCategorie.fxml"), 
+//	TestDaoMemo("test/ViewTestDaoMemo.fxml"),;
 
 	// Champs
 

@@ -10,6 +10,8 @@ import fwk3il.commun.context.IContext;
 import fwk3il.dao.jdbc.DataSourceSingleConnection;
 import fwk3il.javafx.view.IManagerGui;
 import projet.commun.IMapper;
+import projet.dao.DaoVisiteur;
+import projet.data.Visiteur;
 import projet.view.ManagerGui;
 
 
@@ -28,6 +30,7 @@ public class MainProjet {
 
 			// Context
 			IContext context = new ContextStandard();
+			context.addBean( context );
 			context.addBean( dataSource );
 			context.addBean( Mappers.getMapper( IMapper.class ) );
 
@@ -38,7 +41,13 @@ public class MainProjet {
 			managerGui.addRessourcesToClose( dataSource );
 			
 			// Démarre l'application
-			managerGui.launch();
+			managerGui.launch(); 
+			
+			
+			// Visiteur visiteur = new Visiteur(6,"bobo","vanel",1,2);  DaoVisiteur
+		//	 daovisit = context.getBean(DaoVisiteur.class); daovisit.inserer(visiteur);
+			 
+			
 			
 		} catch(Exception e) {
 			e.printStackTrace();

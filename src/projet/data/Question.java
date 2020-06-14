@@ -12,6 +12,8 @@ public class Question {
 	private final Property<String>	libelle	= new SimpleObjectProperty<>();
 	private final Property<String>	bulle_info	= new SimpleObjectProperty<>();
 	private final Property<String>	indice	= new SimpleObjectProperty<>();
+	private final Property<Integer>	numth	= new SimpleObjectProperty<>();
+	
 	
 	
 
@@ -20,11 +22,12 @@ public class Question {
 		public Question() {   
 		}
 
-		public Question( final int Id_ques, final String libelle , final String bulle_info, final String indice ) {
+		public Question( final int Id_ques, final String libelle , final String bulle_info, final String indice,final int numth ) {
 			setIdques(Id_ques);
 			setlibelle(libelle);
 			setBulleInfo(bulle_info);
 			setIndice(indice );
+			setNumth(numth);
 			
 		}
 
@@ -76,6 +79,18 @@ public class Question {
 		
 		public final void setIndice(final String indice) {
 			this.IndiceProperty().setValue(indice);
+		}
+		
+		public final Property<Integer> NumthProperty() {
+			return this.numth;
+		}
+		
+		public final Integer getNumth() {
+			return this.NumthProperty().getValue();
+		}
+
+		public final void setNumth(final Integer numth) {
+			this.NumthProperty().setValue(numth);
 		}
 		
 		// toString()

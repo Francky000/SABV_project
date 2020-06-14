@@ -45,7 +45,7 @@ public class DaoTheme {
 				stmt.executeUpdate();
 
 				// Récupère l'identifiant généré par le SGBD
-				theme.setIdth( stmt.getInt( 2 ) );
+				theme.setNumth( stmt.getInt( 2 ) );
 		
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
@@ -55,13 +55,13 @@ public class DaoTheme {
     
 		
 			// Retourne l'identifiant          
-			return theme.getIdth();        
+			return theme.getNumth();        
 		}    
 
 		
 		
    
-		public List<Theme> listerTout()   {
+		public List<String> listerTout()   {
 
 			Connection			cn		= null;
 			PreparedStatement	stmt	= null;
@@ -75,11 +75,11 @@ public class DaoTheme {
 				stmt = cn.prepareStatement( sql );
 				rs = stmt.executeQuery();
 
-				List<Theme> comptes = new ArrayList<>();
+				List<String> libelletheme = new ArrayList<>();
 				while ( rs.next() ) {
-					comptes.add( construireTheme(rs) );
+					libelletheme.add( construireTheme(rs).getlibelleth() );
 				}
-				return comptes;
+				return libelletheme;
 
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
@@ -92,7 +92,7 @@ public class DaoTheme {
 		
 		private Theme construireTheme( ResultSet rs ) throws SQLException {
 			Theme theme = new Theme();
-			theme.setIdth( rs.getInt( "numth" ) );
+			theme.setNumth( rs.getInt( "numth" ) );
 			theme.setlibelle( rs.getString( "libelle_th" ) );
 			
 			//theme.getRoles().addAll( daoRole.listerPourCompte( compte ) );
@@ -111,7 +111,7 @@ public class DaoTheme {
 				// Modifie le personne
 				sql = "UPDATE THEME SET LIBELLE_TH = ? WHERE NUMTH =  ?";
 				stmt = cn.prepareStatement( sql );
-				stmt.setInt(	1, theme.getIdth() );
+				stmt.setInt(	1, theme.getNumth() );
 				stmt.setString(	2, theme.getlibelleth() );
 				
 				stmt.executeUpdate();
@@ -144,6 +144,32 @@ public class DaoTheme {
 			}
 		}
 		
+		public int valeurNumth(String libelleth)  {
+
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs 		= null;
+			String 				sql;
+
+			try {
+				cn = dataSource.getConnection();
+
+				sql = "select numth from theme where libelle_th =  ?";
+				stmt = cn.prepareStatement( sql );
+				stmt.setString(	1, libelleth );
+				rs = stmt.executeQuery();
+				rs.next();
+				return rs.getInt("numth");
+				
+				
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close(rs, stmt, cn );
+			}  
+
+			
+		}
 		
 		
 }

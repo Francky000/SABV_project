@@ -30,7 +30,7 @@
 //	@FXML
 //	private void doLister() {
 //		textArea.clear();
-//		for (Object item : dao.listerTout() ) {
+//	for (Object item : dao.listerTout() ) {
 //			textArea.appendText( UtilFX.objetToString( item ) );
 //			textArea.appendText( "\n"  );
 //		}
@@ -52,7 +52,7 @@
 //		dao.modifier( dao.retrouver( id ) );
 //		textArea.appendText(  "Test n°3 OK \n");;
 //	}
-//	
+//
 //	@FXML
 //	private void doInsererSupprimer() {
 //		textArea.clear();

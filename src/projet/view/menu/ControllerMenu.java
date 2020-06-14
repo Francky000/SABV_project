@@ -9,6 +9,8 @@ import javax.inject.Inject;
 
 //import fwk3il.javafx.view.IEnumView;
 import fwk3il.javafx.view.IManagerGui;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 //import fwk3il.stub.ManagerGui;
@@ -17,14 +19,20 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import projet.dao.DaoCategorie;
+import projet.dao.DaoDiplome;
+import projet.dao.DaoTheme;
+import projet.dao.DaoVisiteur;
 import projet.data.Categorie;
+import projet.data.Diplome;
 import projet.data.Personne;
+import projet.data.Theme;
 import projet.data.Visiteur;
 import projet.model.ModelCategorie;
+import projet.model.ModelDiplome;
 import projet.model.ModelTheme;
 import projet.model.ModelVisiteur;
 import projet.view.EnumView;
-//import projet.view.ManagerGui;
+import projet.view.quizz.ControllerQuizz;
 
 public class ControllerMenu {
 
@@ -32,16 +40,20 @@ public class ControllerMenu {
 
 	@Inject
 	private IManagerGui managerGui;
-
 	@Inject
 	private ModelCategorie modelcategorie;
-
 	@Inject
 	private ModelVisiteur modelvisiteur;
-	
+	@Inject
+	private ModelDiplome modeldiplome;
 	@Inject
 	private DaoCategorie daocategorie;
-
+	@Inject
+	private DaoDiplome daodiplome;
+	@Inject
+	private DaoTheme daotheme;
+	@Inject
+	DaoVisiteur dao;
 	@Inject
 	private ModelTheme modeltheme;
 
@@ -70,53 +82,77 @@ public class ControllerMenu {
 		managerGui.exit();
 	}
 
-
-	//@FXML // Initialisation des controllers ne depend plus de FXML
+	@FXML
 	public void initialize() {
-
-		// Champs simples
-		Visiteur encours = modelvisiteur.getEnCours();
-		TfNom.textProperty().bindBidirectional(encours.nomProperty());
-		//TfPrenom.textProperty().bindBidirectional(encours.nomProperty());
-
+		RbParcours.setSelected(true);
 		// configuration des combo box
 
 		// Data binding
+		modelcategorie.actualiserListe();
+		comboBoxAge.getItems().addAll(modelcategorie.getListe());
 
-		List<String> listtte = new ArrayList<String>();
-		List<Categorie> categliste= daocategorie.listerTout();
-		ListIterator<Categorie> it= categliste.listIterator();
-		while(it.hasNext()) {
-			listtte.add(it.next().getLibelleta());
+		modeltheme.actualiserListe();
+		comboBoxTheme.setItems(modeltheme.getListe());
+
+		// Champs simples
+		modelvisiteur.getEnCours().nomProperty().bindBidirectional(TfNom.textProperty());
+		modelvisiteur.getEnCours().prenomProperty().bindBidirectional(TfPrenom.textProperty());
+		modelvisiteur.getEnCours().setModejeu(0);
+		modeldiplome.getEnCours().libelletaProperty().bind(comboBoxAge.valueProperty());
+		
+		String a;
+		modeldiplome.getEnCours().setscoredip(0);
+		modeldiplome.getEnCours().setlibelledip("dispo");
+		if (RbSimple.isSelected())
+			modeltheme.getEnCours().libellethProperty().bind(comboBoxTheme.valueProperty());
+		if (RbParcours.isSelected()) {
+			modeltheme.getEnCours().setNumth(1);
+			modeltheme.getEnCours().setlibelle((modeltheme.getListe().get(0)));
 		}
-		comboBoxAge.setItems((ObservableList<String>) listtte);
-		//comboBoxAge.valueProperty().bindBidirectional(encours.categorieProperty());
-		// comboBoxAge.getItems().addAll("0 -4 ans","5 -9 ans","9 -13 ans","14 ans et
-		// plus");
-
-		//comboBoxTheme.setItems(modeltheme.getListe());
-		//comboBoxTheme.valueProperty().bindBidirectional(encours.themeProperty());
-		// comboBoxTheme.getItems().addAll("Faune","Flore","Eau","Deforestation","Jungle");
-	}
+		ModeJeu();
+		
 	
-//	public void refresh() {
-//		Categorie categorie = modelvisiteur.getEnCours().getCategorie();
-//		modelcategorie.actualiserListe();
-//		modelvisiteur.getEnCours().setCategorie( categorie );
-//	}
-//	
+	}
+
+	@FXML
+	public void refresh() {
+		initialize();
+		
+	}
+
+	@FXML
+	public void ModeJeu() {
+		if (RbSimple.isSelected()) {
+			modelvisiteur.getEnCours().setModejeu(0);
+			comboBoxTheme.setDisable(false);
+		}
+		if (RbParcours.isSelected()) {
+			modelvisiteur.getEnCours().setModejeu(1);
+			comboBoxTheme.setDisable(true);
+		}
+
+	}
+
 	@FXML
 	private void doQuizz() throws IOException {
+		daodiplome.inserer(modeldiplome.getEnCours());
+		dao.inserer(modelvisiteur.getEnCours());
+		if (modelvisiteur.getEnCours().getModejeu() == 0) {
+	
+			modeltheme.getEnCours().setlibelle(comboBoxTheme.getValue());;
+			managerGui.showView(EnumView.Quizz);
+		}
+		if (modelvisiteur.getEnCours().getModejeu() == 1) {
 
-//		if (RbSimple.isSelected()) {
-//			System.out.println("MODE SIMPLE");
-//
-//		}
-//		if (RbParcours.isSelected()) {
-//			System.out.println("MODE PARCOURS");
-//		}
-        modelvisiteur.validerMiseAJour();
-		managerGui.showView(EnumView.Quizz);
+			modeltheme.getEnCours().setNumth(1);
+			modeltheme.getEnCours().setlibelle((modeltheme.getListe().get(0)));
+			managerGui.showView(EnumView.Quizz);
+		}
+		
+		if(comboBoxAge.getValue().equals("plus_petits")) {
+			managerGui.showView(EnumView.FROID);
+		}
+
 	}
 
 }

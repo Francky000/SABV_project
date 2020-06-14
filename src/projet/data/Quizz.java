@@ -12,7 +12,8 @@ public class Quizz {
 	private final Property<String>	titre	= new SimpleObjectProperty<>();
 	private final Property<Integer>	Numth		= new SimpleObjectProperty<>();
 	private final Property<Integer>	idStatScore		= new SimpleObjectProperty<>();
-	private final static int	nb_ques		= 10;
+	private final Property<Integer>	nb_ques	= new SimpleObjectProperty<>();
+	//private final static int	nb_ques		= 10;
 	
 	// Constructeurs
 	
@@ -78,6 +79,20 @@ public class Quizz {
 			this.idStatScoreProperty().setValue(idStatScore);
 		}
 		
+		public final Property<Integer> nb_quesProperty() {
+			return this.nb_ques;
+		}
+		
+
+		public final Integer getNb_ques() {
+			return this.nb_quesProperty().getValue();
+		}
+		
+
+		public final void setNb_ques(final Integer nb_ques) {
+			this.nb_quesProperty().setValue(nb_ques);
+		}
+		
 		// toString()
 		
 		@Override
@@ -102,7 +117,10 @@ public class Quizz {
 				return false;
 			Quizz other = (Quizz) obj;
 			return Objects.equals(id_qz.getValue(), other.id_qz.getValue() );
-		}  
+		}
+
+	
+		  
 		
 		
 		

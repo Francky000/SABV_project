@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="343.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.menu.ControllerMenu">
+<StackPane prefHeight="343.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.menu.ControllerMenu">
    <children>
       <ImageView fitHeight="400.0" fitWidth="610.0" pickOnBounds="true">
          <image>
@@ -69,13 +69,13 @@
                </font>
             </Label>
             <ComboBox fx:id="comboBoxAge" prefHeight="28.0" prefWidth="210.0" promptText="Choix de la tranche d'âge" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <ComboBox fx:id="comboBoxTheme" prefHeight="28.0" prefWidth="211.0" promptText="Choix du thème" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <RadioButton fx:id="RbParcours" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <ComboBox fx:id="comboBoxTheme" prefHeight="28.0" prefWidth="211.0" promptText="Choix du theme" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <RadioButton fx:id="RbParcours" mnemonicParsing="false" onAction="#ModeJeu" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <toggleGroup>
                   <ToggleGroup fx:id="togglemode" />
                </toggleGroup></RadioButton>
-            <RadioButton fx:id="RbSimple" mnemonicParsing="false" selected="true" toggleGroup="$togglemode" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <TextField fx:id="TfNom" text="Nom" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <RadioButton fx:id="RbSimple" mnemonicParsing="false" onAction="#ModeJeu" selected="true" toggleGroup="$togglemode" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <TextField fx:id="TfNom" promptText="Nom" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <ImageView fitHeight="62.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
                <image>
                   <Image url="@../../../application/Images/th.jpg" />
@@ -86,7 +86,7 @@
                   <Font name="Comic Sans MS" size="21.0" />
                </font>
             </Label>
-            <TextField text="Prenom" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <TextField fx:id="TfPrenom" promptText="Prenom" GridPane.columnIndex="3" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>

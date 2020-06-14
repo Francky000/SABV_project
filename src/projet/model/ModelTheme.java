@@ -17,7 +17,7 @@ public class ModelTheme {
 
 	// Données observables 
 	
-		private final ObservableList<Theme> liste = FXCollections.observableArrayList();   
+		private final ObservableList<String> liste = FXCollections.observableArrayList();   
 		
 		private final Theme		enCours = new Theme();
 		
@@ -30,7 +30,7 @@ public class ModelTheme {
 	    
 	 // Getters     
 		
-		public ObservableList<Theme> getListe() {
+		public ObservableList<String> getListe() {
 			return liste;
 		}                 
 
