@@ -13,8 +13,8 @@ Le projet est basé sur une Architecture MVC couplée a un framework en interne.
 
 ## Analyse
 * Modelisation UML avec Visula Paradigm
-**Diagramme des cas d'utilisation
-**Diagramme d'actvité
+1. Diagramme des cas d'utilisation
+2. Diagramme d'actvité
 
 * Modéles de données (MCD) avec JMerise ou  Visual Paradigm
 
