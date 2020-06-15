@@ -9,4 +9,17 @@ suivant : Sensibiliser le grand public et le milieu scolaire :
 * à la gestion des déchets
 * à la protection de la biodiversité
 
-Le projet est basé sur Architecture MVC couplé a un framework en interne. Nous avons choisi de faire un MVC pour rendre le code beaucoup plus clair et visible pour l'utilisateur. 
+Le projet est basé sur une Architecture MVC couplée a un framework en interne. Nous avons choisi de faire un MVC pour rendre le code beaucoup plus clair et visible pour l'utilisateur. 
+
+## Analyse
+* Modelisation UML avec Visula Paradigm
+** Diagramme des cas d'utilisation
+** Diagramme d'actvité
+
+* Modéles de données (MCD) avec JMerise ou  Visual Paradigm
+
+## Base de données
+* Oracle
+
+## Application
+* JAva et bibliothéque
